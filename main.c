@@ -27,8 +27,8 @@ int main(void)
 
     while(interacao)
     {
-        apresenta_programa("========INSTITUICAO DE CARIDADE GAME OF THRONES========"
-                           "\n------------RESPONSAVEL: DAENERYS TARGARYEN------------");//'MENSAGEM' APRESENTACAO DO PROGRAMA
+        apresenta_programa("========SISTEMA ORGANIZACIONAL INSTITUICAO DE ENSINO SUPERIOR========\n"
+                           "\n------------------SEJA BEM VINDO.Versao 1.0------------------");//'MENSAGEM' APRESENTACAO DO PROGRAMA
         apresenta_menu(N_OPCOES, OPCAO1,TITULO_OPCAO1, TITULO_OPCAO2,TITULO_OPCAO3, TITULO_OPCAO4,
                        TITULO_OPCAO5, TITULO_OPCAO6); //APRESENTA O 'MENU'
         op = le_opcao(OPCAO1, OPCAO1 + N_OPCOES - 1); //LÊ OPCAO DIGITADA
