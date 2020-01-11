@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "interacao.h"
+#include "departamento.h"
 
 
 #define OPCAO1 '1'
@@ -21,7 +22,7 @@
 
 int main(void)
 {
-    //VARIÁVEIS DE INTERAÇÃO DO MENU
+    //VARIÁVEIS DE INTERAÇÃO
     int interacao = 1;
     int op;
 

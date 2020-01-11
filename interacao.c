@@ -9,6 +9,7 @@
         printf("\n%s\n\n",msg);
     }
 
+
     void mensagem_despedida(char* msg)
     {
         printf("\n%s\n\n",msg);
@@ -20,6 +21,7 @@
         system("cls");
     }
 
+
     void limpa_buffer(void)
     {
         int valorLido;
@@ -28,6 +30,7 @@
             valorLido = getchar();
         }while((valorLido != '\n') && (valorLido != EOF));
     }
+
 
     int le_opcao(int menor_valor, int maior_valor)
     {
@@ -49,9 +52,9 @@
                 limpa_buffer();
             }
         }
-
         return op;
     }
+
 
     char* le_string(void)
     {
@@ -60,6 +63,7 @@
         limpa_buffer();
         return string;
     }
+
 
     void apresenta_menu(int n_itens, int menor_opcao, ...)
     {
@@ -72,3 +76,4 @@
         }
         va_end(argumentos);
     }
+

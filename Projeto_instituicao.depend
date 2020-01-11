@@ -1,14 +1,23 @@
 # depslib dependency file v1.0
-1578576707 source:c:\users\asus\desktop\projeto_instituicao\interacao.c
+1578752517 source:c:\users\asus\desktop\projeto_instituicao\interacao.c
 	<stdio.h>
 	<stdlib.h>
 	<stdarg.h>
 	"interacao.h"
 
-1578576707 c:\users\asus\desktop\projeto_instituicao\interacao.h
+1578752515 c:\users\asus\desktop\projeto_instituicao\interacao.h
 
-1578577485 source:c:\users\asus\desktop\projeto_instituicao\main.c
+1578760652 source:c:\users\asus\desktop\projeto_instituicao\main.c
 	<stdio.h>
 	<stdlib.h>
 	"interacao.h"
+	"departamento.h"
+
+1578753138 c:\users\asus\desktop\projeto_instituicao\departamento.h
+
+1578753782 source:c:\users\asus\desktop\projeto_instituicao\departamento.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"departamento.h"
 
