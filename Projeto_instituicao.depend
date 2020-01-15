@@ -7,7 +7,7 @@
 
 1578752515 c:\users\asus\desktop\projeto_instituicao\interacao.h
 
-1579096330 source:c:\users\asus\desktop\projeto_instituicao\main.c
+1579098930 source:c:\users\asus\desktop\projeto_instituicao\main.c
 	<stdio.h>
 	<stdlib.h>
 	"interacao.h"
@@ -25,7 +25,7 @@
 	"departamento.h"
 	"professor.h"
 
-1579091630 c:\users\asus\desktop\projeto_instituicao\instituicao.h
+1579099062 c:\users\asus\desktop\projeto_instituicao\instituicao.h
 	"departamento.h"
 	"professor.h"
 
@@ -38,7 +38,7 @@
 	<ctype.h>
 	"professor.h"
 
-1579096611 source:c:\users\asus\desktop\projeto_instituicao\instituicao.c
+1579099062 source:c:\users\asus\desktop\projeto_instituicao\instituicao.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
