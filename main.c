@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "interacao.h"
+#include "instituicao.h"
 #include "departamento.h"
+#include "professor.h"
 
 
 #define OPCAO1 '1'
@@ -11,6 +13,7 @@
 #define OPCAO5 '5'
 #define OPCAO6 '6'
 
+
 #define TITULO_OPCAO1 "CADASTRAR DEPARTAMENTO"
 #define TITULO_OPCAO2 "CADASTRAR PROFESSOR(A)"
 #define TITULO_OPCAO3 "LISTAR PROFESSORES COM MESTRADO"
@@ -18,10 +21,13 @@
 #define TITULO_OPCAO5 "SALVAR DADOS EM ARQUIVO"
 #define TITULO_OPCAO6 "SAIR DO PROGRAMA"
 
+
 #define N_OPCOES 6
+
 
 int main(void)
 {
+
     //VARIÁVEIS DE INTERAÇÃO
     int interacao = 1;
     int op;

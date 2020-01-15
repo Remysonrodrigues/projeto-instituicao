@@ -7,17 +7,42 @@
 
 1578752515 c:\users\asus\desktop\projeto_instituicao\interacao.h
 
-1578760652 source:c:\users\asus\desktop\projeto_instituicao\main.c
+1579096330 source:c:\users\asus\desktop\projeto_instituicao\main.c
 	<stdio.h>
 	<stdlib.h>
 	"interacao.h"
+	"instituicao.h"
 	"departamento.h"
+	"professor.h"
 
-1578753138 c:\users\asus\desktop\projeto_instituicao\departamento.h
+1579096235 c:\users\asus\desktop\projeto_instituicao\departamento.h
+	"professor.h"
 
-1578753782 source:c:\users\asus\desktop\projeto_instituicao\departamento.c
+1579096611 source:c:\users\asus\desktop\projeto_instituicao\departamento.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"departamento.h"
+	"professor.h"
+
+1579091630 c:\users\asus\desktop\projeto_instituicao\instituicao.h
+	"departamento.h"
+	"professor.h"
+
+1579090881 c:\users\asus\desktop\projeto_instituicao\professor.h
+
+1579090881 source:c:\users\asus\desktop\projeto_instituicao\professor.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"professor.h"
+
+1579096611 source:c:\users\asus\desktop\projeto_instituicao\instituicao.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"instituicao.h"
+	"departamento.h"
+	"professor.h"
 

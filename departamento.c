@@ -2,15 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "departamento.h"
-
-
-    struct professor
-    {
-        char nome[100];
-        int matricula;
-        char area_atuacao[50];
-        char titulacao[30];
-    };
+#include "professor.h"
 
 
     struct arvno
@@ -39,40 +31,51 @@
     }
 
 
-    static Professor* professor_insere(char* nome, int mat, char* area_atuacao, char* titulacao)
-    {
-        Professor* prof = (Professor*)malloc(sizeof(Professor));
-        strcpy(prof->nome, nome);
-        prof->matricula = mat;
-        strcpy(prof->area_atuacao, area_atuacao);
-        strcpy(prof->titulacao, titulacao);
-        return prof;
-    }
-
-
-    static ArvNo* insere(ArvNo* prof, char* nome, int mat, char* area_atuacao, char* titulacao)
+    static ArvNo* insere(ArvNo* prof, Professor* p)
     {
         if(prof == NULL)
         {
             prof = (ArvNo*)malloc(sizeof(ArvNo));
-            prof->info = professor_insere(nome, mat, area_atuacao, titulacao);
+            prof->info = p;
             prof->esq = prof->dir = NULL;
         }
-        else if(strcmp(prof->info->nome, nome) > 0)
+        else if(strcmp(professor_nome(prof->info), professor_nome(p)) > 0)
         {
-            prof->esq = insere(prof->esq, nome, mat, area_atuacao, titulacao);
+            prof->esq = insere(prof->esq, p);
         }
         else
         {
-            prof->dir = insere(prof->dir, nome, mat, area_atuacao, titulacao);
+            prof->dir = insere(prof->dir, p);
         }
         return prof;
     }
 
 
-    void departamento_insere_professor(Departamento_Arv* depart, char* nome, int mat, char* area_atuacao, char* titulacao)
+    void departamento_insere_professor(Departamento_Arv* depart, Professor* p)
     {
-        depart->raiz = insere(depart->raiz,nome, mat, area_atuacao, titulacao);
+        depart->raiz = insere(depart->raiz, p);
+    }
+
+
+    static void imprime_mestrado(ArvNo* prof)
+    {
+        if(prof != NULL && strcmp(professor_titulacao(prof->info), "Mestrado") == 0)
+        {
+            imprime_mestrado(prof->esq);
+            professor_imprime(prof->info);
+            imprime_mestrado(prof->dir);
+        }
+    }
+
+
+    static void imprime_doutorado(ArvNo* prof)
+    {
+        if(prof != NULL && strcmp(professor_titulacao(prof->info), "Doutorado") == 0)
+        {
+            imprime_doutorado(prof->esq);
+            professor_imprime(prof->info);
+            imprime_doutorado(prof->dir);
+        }
     }
 
 
@@ -81,20 +84,30 @@
         if(prof != NULL)
         {
             imprime(prof->esq);
-            printf("\tNome: %s\n", prof->info->nome);
-            printf("\tMatricula: %d\n", prof->info->matricula);
-            printf("\tArea de Atuacao: %s\n", prof->info->area_atuacao);
-            printf("\tTitulacao: %s\n\n", prof->info->titulacao);
+            professor_imprime(prof->info);
             imprime(prof->dir);
         }
     }
 
 
-    void departamento_imprime(Departamento_Arv* depart)
+    void departamento_imprime(Departamento_Arv* depart, int op)
     {
+        op = (int) op;
         printf("Nome do Departamento: %s\n", depart->nome);
         printf("Sigla: %s\n\n", depart->sigla);
-        imprime(depart->raiz);
+
+        if(op == 1) //Listar Professores com Mestrado
+        {
+            imprime_mestrado(depart->raiz);
+        }
+        else if(op == 2) //Listar Professores com Doutorado
+        {
+            imprime_doutorado(depart->raiz);
+        }
+        else //Listar Todos os Professores
+        {
+            imprime(depart->raiz);
+        }
     }
 
 
@@ -103,8 +116,8 @@
         if(r != NULL)
         {
             libera(r->esq);
+            professor_libera(r->info);
             libera(r->dir);
-            free(r->info);
             free(r);
         }
     }
@@ -114,5 +127,11 @@
     {
         libera(depart->raiz);
         free(depart);
+    }
+
+
+    char* departamento_sigla(Departamento_Arv* depart)
+    {
+        return depart->sigla;
     }
 
