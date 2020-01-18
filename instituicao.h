@@ -13,7 +13,7 @@
 
     void listar_departamento_professores(Hash* tab, int op);
 
-    //Hash* instituicao_hash_carrega(FILE* fp);
+    Hash* instituicao_hash_carrega(FILE* fp);
 
     //void instituicao_hash_salva(FILE* fp,Hash* tab);
 

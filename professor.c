@@ -31,18 +31,57 @@
     }
 
 
-    char* professor_titulacao(Professor* prof)
-    {
-        return prof->titulacao;
-    }
-
-
-    void professor_imprime(Professor* prof)
+    static void dados_professor(Professor* prof)
     {
         printf("Nome: %s\n", prof->nome);
         printf("Matricula: %d\n", prof->matricula);
         printf("Area de Atuacao: %s\n", prof->area_atuacao);
         printf("Titulacao: %s\n\n", prof->titulacao);
+    }
+
+    static void imprime_mestrado(Professor* prof)
+    {
+        if(prof != NULL && strcmp(prof->titulacao, "Mestrado") == 0)
+        {
+            dados_professor(prof);
+        }
+    }
+
+
+    static void imprime_doutorado(Professor* prof)
+    {
+        if(prof != NULL && strcmp(prof->titulacao, "Doutorado") == 0)
+        {
+            dados_professor(prof);
+        }
+    }
+
+
+    static void imprime(Professor* prof)
+    {
+        if(prof != NULL)
+        {
+            dados_professor(prof);
+        }
+    }
+
+
+    void professor_imprime(Professor* prof, int op)
+    {
+
+        if(op == 1) //Imprime Professor com Mestrado
+        {
+            imprime_mestrado(prof);
+        }
+        else if(op == 2) //Imprime Professor com Doutorado
+        {
+            imprime_doutorado(prof);
+        }
+        else //Imprime Professor
+        {
+            imprime(prof);
+        }
+
     }
 
 

@@ -108,13 +108,28 @@
     }
 
 
-    /*
+
     Hash* instituicao_hash_carrega(FILE* fp)
     {
+        Hash* tab = instituicao_hash_cria();
 
+        //Variáveis Auxiliares Departamento
+        char nome_depart[100];
+        char sigla[10];
+
+        //Variáveis Auxiliares Professor
+        char nome_prof[100];
+        int matricula;
+        char area_atuacao[50];
+        char titulacao[30];
+
+        while(fscanf(fp, "%99[^\n] %9[^\n]", nome_depart, sigla, nome_prof, &matricula, area_atuacao, titulacao) != EOF)
+        {
+            while(fscanf(fp, ))
+        }
     }
 
-
+    /*
     void instituicao_hash_salva(FILE* fp, Hash* tab)
     {
 

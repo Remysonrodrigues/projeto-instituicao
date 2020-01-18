@@ -7,9 +7,7 @@
 
     char* professor_nome(Professor* prof);
 
-    char* professor_titulacao(Professor* prof);
-
-    void professor_imprime(Professor* prof);
+    void professor_imprime(Professor* prof, int op);
 
     void professor_libera(Professor* prof);
 

@@ -134,7 +134,11 @@ int main(void)
 
             //OPCAO 4 LISTAR PROFESSORES COM DOUTORADO
             case OPCAO4:
-
+                        limpa_tela();
+                        printf("\nPROFESSORES COM DOUTORADO:\n\n");
+                        listar_departamento_professores(instituicao, 2);
+                        system("pause");
+                        limpa_tela();
                         break;
 
             //OPCAO 5 SALVAR DADOS EM ARQUIVO

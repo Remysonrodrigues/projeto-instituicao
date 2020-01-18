@@ -57,57 +57,24 @@
     }
 
 
-    static void imprime_mestrado(ArvNo* prof)
-    {
-        if(prof != NULL && strcmp(professor_titulacao(prof->info), "Mestrado") == 0)
-        {
-            imprime_mestrado(prof->esq);
-            professor_imprime(prof->info);
-            imprime_mestrado(prof->dir);
-        }
-    }
-
-
-    static void imprime_doutorado(ArvNo* prof)
-    {
-        if(prof != NULL && strcmp(professor_titulacao(prof->info), "Doutorado") == 0)
-        {
-            imprime_doutorado(prof->esq);
-            professor_imprime(prof->info);
-            imprime_doutorado(prof->dir);
-        }
-    }
-
-
-    static void imprime(ArvNo* prof)
+    static void imprime(ArvNo* prof, int op)
     {
         if(prof != NULL)
         {
-            imprime(prof->esq);
-            professor_imprime(prof->info);
-            imprime(prof->dir);
+            imprime(prof->esq, op);
+            professor_imprime(prof->info, op);
+            imprime(prof->dir, op);
         }
     }
 
 
     void departamento_imprime(Departamento_Arv* depart, int op)
     {
-        op = (int) op;
         printf("Nome do Departamento: %s\n", depart->nome);
         printf("Sigla: %s\n\n", depart->sigla);
 
-        if(op == 1) //Listar Professores com Mestrado
-        {
-            imprime_mestrado(depart->raiz);
-        }
-        else if(op == 2) //Listar Professores com Doutorado
-        {
-            imprime_doutorado(depart->raiz);
-        }
-        else //Listar Todos os Professores
-        {
-            imprime(depart->raiz);
-        }
+            imprime(depart->raiz, op);
+
     }
 
 
