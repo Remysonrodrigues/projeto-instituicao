@@ -78,6 +78,39 @@
     }
 
 
+    void departamento_salva(FILE* fp, ArvNo* depart)
+    {
+        if(depart != NULL)
+        {
+            departamento_salva(fp, depart->esq);
+            fprintf(fp,"%s\n%d\n%s\n%s\n", professor_nome(depart->info),
+                                           professor_matricula(depart->info),
+                                           professor_area(depart->info),
+                                           professor_titulacao(depart->info));
+
+            departamento_salva(fp, depart->dir);
+        }
+    }
+
+
+    Departamento_Arv* departamento_carrega(FILE* fp, Departamento_Arv* depart, int quant_professor)
+    {
+        int i;
+        //Variáveis Auxiliares Professor
+        char nome_prof[100];
+        int matricula;
+        char area_atuacao[50];
+        char titulacao[30];
+
+        for(i = 0; i < quant_professor; i++)
+        {
+            fscanf(fp, "%s\n%d\n%s\n%s\n", nome_prof, &matricula, area_atuacao, titulacao);
+            departamento_insere_professor(depart, professor_cria(nome_prof, matricula, area_atuacao, titulacao));
+        }
+        return depart;
+    }
+
+
     static void libera(ArvNo* r)
     {
         if(r != NULL)
@@ -90,10 +123,35 @@
     }
 
 
-    void departamento_libera(Departamento_Arv* depart)
+    void departamento_libera(ArvNo* depart)
     {
-        libera(depart->raiz);
-        free(depart);
+        libera(depart);
+    }
+
+
+    static int quantidade(ArvNo* depart)
+    {
+        if(depart == NULL)
+        {
+           return 0;
+        }
+        else
+        {
+            return 1 + quantidade(depart->esq) + quantidade(depart->dir);
+        }
+
+    }
+
+
+    int departamento_quant_professor(Departamento_Arv* depart)
+    {
+        return quantidade(depart->raiz);
+    }
+
+
+    char* departamento_nome(Departamento_Arv* depart)
+    {
+        return depart->nome;
     }
 
 
@@ -102,3 +160,8 @@
         return depart->sigla;
     }
 
+
+    ArvNo* departamento_raiz(Departamento_Arv* depart)
+    {
+        return depart->raiz;
+    }

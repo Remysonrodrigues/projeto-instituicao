@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 #include "professor.h"
 
 
@@ -22,12 +21,6 @@
         strcpy(prof->area_atuacao, area_atuacao);
         strcpy(prof->titulacao, titulacao);
         return prof;
-    }
-
-
-    char* professor_nome(Professor* prof)
-    {
-        return prof->nome;
     }
 
 
@@ -88,4 +81,28 @@
     void professor_libera(Professor* prof)
     {
         free(prof);
+    }
+
+
+    char* professor_nome(Professor* prof)
+    {
+        return prof->nome;
+    }
+
+
+    int professor_matricula(Professor* prof)
+    {
+        return prof->matricula;
+    }
+
+
+    char* professor_area(Professor* prof)
+    {
+        return prof->area_atuacao;
+    }
+
+
+    char* professor_titulacao(Professor* prof)
+    {
+        return prof->titulacao;
     }

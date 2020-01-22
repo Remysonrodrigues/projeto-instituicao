@@ -15,7 +15,7 @@
 
     Hash* instituicao_hash_carrega(FILE* fp);
 
-    //void instituicao_hash_salva(FILE* fp,Hash* tab);
+    void instituicao_hash_salva(FILE* fp, Hash* tab);
 
     void instituicao_hash_libera(Hash* tab);
 

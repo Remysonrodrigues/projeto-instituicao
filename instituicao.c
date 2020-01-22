@@ -83,7 +83,7 @@
             {
                 return tab->d[h];
             }
-            h = (h+1) % tab->n;
+            h = (h+1) % tab->dim;
         }
         return NULL;
     }
@@ -108,32 +108,48 @@
     }
 
 
-
     Hash* instituicao_hash_carrega(FILE* fp)
     {
         Hash* tab = instituicao_hash_cria();
+        int aux = 0;
+        int quantidade_professor;
 
         //Variáveis Auxiliares Departamento
         char nome_depart[100];
         char sigla[10];
+        Departamento_Arv* depart;
 
-        //Variáveis Auxiliares Professor
-        char nome_prof[100];
-        int matricula;
-        char area_atuacao[50];
-        char titulacao[30];
-
-        while(fscanf(fp, "%99[^\n] %9[^\n]", nome_depart, sigla, nome_prof, &matricula, area_atuacao, titulacao) != EOF)
+        while(fscanf(fp, "%d\n", &quantidade_professor) != EOF && aux++ <= quantidade_professor + 1)
         {
-            while(fscanf(fp, ))
+            fscanf(fp, "%s\n %99[^\n]", sigla, nome_depart);
+            depart = departamento_cria(nome_depart, sigla);
+            instituicao_hash_insere(tab, departamento_carrega(fp, depart, quantidade_professor));
         }
+        return tab;
     }
 
-    /*
+
+
     void instituicao_hash_salva(FILE* fp, Hash* tab)
     {
+        Departamento_Arv* d;
+        int i;
+        for(i = 0; i < tab->dim; i++)
+        {
+            d = tab->d[i];
+            if(d != NULL)
+            {
+                fprintf(fp, "%d\n%s\n%s\n", departamento_quant_professor(d),
+                                            departamento_sigla(d),
+                                            departamento_nome(d));
+                if(departamento_raiz(d) != NULL)
+                {
+                    departamento_salva(fp, departamento_raiz(d));
+                }
 
-    }*/
+            }
+        }
+    }
 
 
     void instituicao_hash_libera(Hash* tab)
@@ -141,9 +157,12 @@
         int i;
         for(i = 0; i < tab->dim; i++)
         {
-            departamento_libera(tab->d[i]);
-            free(tab->d[i]);
+            if(tab->d[i] != NULL)
+            {
+                departamento_libera(departamento_raiz(tab->d[i]));
+                free(tab->d[i]);
+            }
+
         }
         free(tab);
     }
-
